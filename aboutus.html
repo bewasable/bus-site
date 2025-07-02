@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пассажирские перевозки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay">
+        <header>
+    <div class="header-top">
+        <h2>Пассажирские перевозки в Новосибирске</h2>
+        <div class="header-contacts">
+            <span>📞 +7 (913) 004-56-58</span>
+            <a href="#contacts" class="order-btn">Заказать звонок</a>
+        </div>
+    </div>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="service.html">Наш транспорт</a>
+        <a href="aboutus.html">О нас</a>
+    </nav>
+</header>
+
+
+        <main>
+            <section id="services" class="services">
+                <h2>Немного о нас</h2>
+                <div class="service-list">
+                    <div class="service-item1">
+                        <img src="images/Гид на автобусном туре.png" alt="Аренда автобуса">
+                        <h3>Аренда автобуса</h3>
+                        <p>Корпоративы, экскурсии, свадьбы</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="contacts">
+            <p>© 2025 ИП Мальцев</p>
+            <p>📞 +7 (913) 004-56-58 | ✉️ maltetransport@yandex.ru | 💬 <a href="https://t.me/username" target="_blank">Мы в Телеграмм</a></p>
+        </footer>
+    </div>
+
+<!-- Всплывающее окно формы -->
+<div class="modal" id="orderModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <h2>Оформить заявку</h2>
+        <form>
+            <label for="name">Имя</label>
+            <input type="text" id="name" placeholder="Ваше имя" required>
+
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+
+            <label for="message">Комментарий</label>
+            <textarea id="message" rows="4" placeholder="Что хотите заказать?"></textarea>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const orderBtn = document.querySelector('.order-btn');
+    const modal = document.getElementById('orderModal');
+    const closeBtn = document.getElementById('closeModal');
+
+    orderBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
