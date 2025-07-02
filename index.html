@@ -95,6 +95,72 @@
         }
     });
 </script>
+<script>
+    const orderBtn = document.querySelector('.order-btn');
+    const modal = document.getElementById('orderModal');
+    const closeBtn = document.getElementById('closeModal');
+    const form = document.getElementById('orderForm');
 
+    orderBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const token = '7528319791:AAGm-CjgLFZFihBi4fxIOVwPnjTqzBjAV3UА';       // вставь сюда токен
+        const chat_id = '5168428996';         // вставь сюда chat_id
+
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
+        const message = form.message.value.trim();
+
+        if (!name || !phone) {
+            alert('Пожалуйста, заполните имя и телефон');
+            return;
+        }
+
+        const text = <b>Новая заявка на звонок</b>:%0A +
+                     <b>Имя:</b> ${name}%0A +
+                     <b>Телефон:</b> ${phone}%0A +
+                     (message ? <b>Комментарий:</b> ${message} : '');
+
+        const url = https://api.telegram.org/bot${token}/sendMessage;
+
+        try {
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chat_id,
+                    text: decodeURIComponent(text),
+                    parse_mode: 'HTML'
+                })
+            });
+
+            const data = await res.json();
+
+            if (data.ok) {
+                alert('Заявка успешно отправлена!');
+                form.reset();
+                modal.style.display = 'none';
+            } else {
+                alert('Ошибка отправки: ' + data.description);
+            }
+        } catch (error) {
+            alert('Ошибка сети: ' + error.message);
+        }
+    });
+</script>
 </body>
 </html>
