@@ -76,46 +76,6 @@
         </form>
     </div>
 </div>
-    <script>
-    document.querySelector('form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const token = '7528319791:AAGm-CjgLFZFihBi4fxIOVwPnjTqzBjAV3U'; // вставь сюда токен
-        const chat_id = '5168428996';    // вставь сюда chat_id
-
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        if (!name || !phone) {
-            alert('Пожалуйста, заполните имя и телефон');
-            return;
-        }
-
-        const text = 
-            Заявка с сайта:\n +
-            Имя: ${name}\n +
-            Телефон: ${phone}\n +
-            Комментарий: ${message ? message : '-'};
-
-        const url = https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(text)};
-
-        try {
-            const res = await fetch(url);
-            const data = await res.json();
-
-            if (data.ok) {
-                alert('Заявка успешно отправлена!');
-                this.reset();
-                document.getElementById('orderModal').style.display = 'none';
-            } else {
-                alert('Ошибка отправки: ' + data.description);
-            }
-        } catch (error) {
-            alert('Ошибка сети: ' + error.message);
-        }
-    });
-    </script>
 <script>
     const orderBtn = document.querySelector('.order-btn');
     const modal = document.getElementById('orderModal');
