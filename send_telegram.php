@@ -1,7 +1,7 @@
 <?php
 // Токен и ID чата Telegram (замени на свои)
-$token = "ВАШ_ТОКЕН_БОТА";
-$chat_id = "ВАШ_CHAT_ID";
+$token = "7528319791:AAGm-CjgLFZFihBi4fxIOVwPnjTqzBjAV3U";
+$chat_id = "5168428996";
 
 // Получаем данные из формы
 $name = $_POST['name'] ?? '';
