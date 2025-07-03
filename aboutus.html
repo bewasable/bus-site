@@ -56,13 +56,13 @@
         <h2>Оформить заявку</h2>
         <form id="orderForm" action="https://formspree.io/f/mvgrygvd" method="POST">
             <label for="name">Имя</label>
-            <input type="text" id="name" placeholder="Ваше имя" required>
+            <input type="text" id="name" name="name" placeholder="Ваше имя" required>
 
             <label for="phone">Телефон</label>
-            <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+            <input type="tel" id="phone"  name="phone" placeholder="+7 (___) ___-__-__" required>
 
             <label for="message">Комментарий</label>
-            <textarea id="message" rows="4" placeholder="Что хотите заказать?"></textarea>
+            <textarea id="message" rows="4"  name="message" placeholder="Что хотите заказать?"></textarea>
 
             <button type="submit">Отправить</button>
         </form>
